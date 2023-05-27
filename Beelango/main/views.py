@@ -1,5 +1,9 @@
 from django.shortcuts import render
 
 
-def welcome(request):
-    return render(request, 'main/welcome.html')
+def home(request):
+    user = request.user
+    if not user.is_authenticated:
+        return render(request, 'main/welcome.html')
+    else:
+        pass

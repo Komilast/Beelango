@@ -1,11 +1,19 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="ru">
 <head>
-  <meta charset="utf-8">
-  <title>Welcome to My Site</title>
+    <meta charset="utf-8">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'main/css/welcome.css' %}">
 </head>
 <body>
-  <h1>Welcome to My Site</h1>
-  <p>Please log in or create an account</p>
+<div id="wrapper">
+    <div id="welcome-container">
+        <img src="{% static 'main/image/welcome-background.png' %}" alt="" id="welcome-background">
+        <p class="site-name"><span class="orange">Bee</span>lango</p>
+        <p id="welcome-text">Изучайте английский на <span class="orange">Bee</span>lango</p>
+        <button class="start-button" type="button">Начать</button>
+    </div>
+</div>
 </body>
 </html>
