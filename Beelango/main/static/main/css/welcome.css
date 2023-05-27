@@ -15,9 +15,8 @@
 
 #welcome-background {
     position: absolute;
-    width: 90vw;
+    width: 100vw;
     opacity: 0.05;
-    left: 100px;
     z-index: 1;
     pointer-events: none;
 }
@@ -54,9 +53,64 @@
     margin: 10px;
     z-index: 2;
     color: white;
-    font-size: 30px;
+    font-size: 2rem;
 }
 
 .orange {
     color: #FFDD33;
+}
+
+#cancel {
+    color: gray;
+    background: none;
+    border: none;
+    width: max-content;
+    align-self: center;
+}
+
+#cancel:hover {
+    cursor: pointer;
+}
+
+#auth {
+    position: fixed;
+    z-index: 3;
+    background: white;
+    display: none;
+    flex-direction: column;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px 40px;
+    border-radius: 20px;
+}
+
+#are-you-registered {
+    margin-bottom: 20px;
+    color: #3388DD;
+    font-size: 20px;
+}
+
+#login {
+    color: white;
+    display: block;
+    background: #3388DD;
+    border-radius: 45px;
+    margin-bottom: 15px;
+    padding: 15px 25px;
+    text-decoration: none;
+    width: max-content;
+    align-self: center;
+}
+
+#register {
+    color: white;
+    display: block;
+    background: #3388DD;
+    border-radius: 45px;
+    margin-bottom: 10px;
+    padding: 15px 25px;
+    text-decoration: none;
+    width: max-content;
+    align-self: center;
 }
