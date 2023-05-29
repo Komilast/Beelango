@@ -5,7 +5,10 @@
     <meta charset="utf-8">
     <title>{{ title }}</title>
     <link rel="stylesheet" type="text/css" href="{% static 'main/css/welcome.css' %}">
-    <link href="{% static 'main/fonts/Comfortaa-Bold.ttf' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
 <div id="wrapper">
@@ -13,14 +16,97 @@
         <p id="are-you-registered">Вы уже зарегистрированы?</p>
         <a href="/" id="login">Войти</a>
         <a href="/" id="register">Регистрация</a>
-        <button id="cancel" type="button">позже</button>
+        <button id="cancel" type="button" onclick="areYouRegistered()">позже</button>
+    </div>
+    <div id="header">
+        <p class="site-name"><span class="orange">Bee</span>lango</p>
+        <button class="start-button" id="header-start-button" type="button" onclick="areYouRegistered()">Начать</button>
     </div>
     <div id="welcome-container">
         <img src="{% static 'main/image/welcome-background.png' %}" alt="" id="welcome-background">
-        <p class="site-name"><span class="orange">Bee</span>lango</p>
+{#        <p class="site-name"><span class="orange">Bee</span>lango</p>#}
         <p id="welcome-text">Изучайте английский<br>на <span class="orange">Bee</span>lango</p>
-        <button class="start-button" type="button">Начать</button>
+        <button class="start-button" id="welcome-start-button" type="button" onclick="areYouRegistered()">Начать</button>
     </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    v
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    v
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    v
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    v
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    v
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    v
+    <br>
 </div>
+<script src="{% static 'main/js/welcome.js' %}"></script>
 </body>
 </html>
