@@ -14,8 +14,8 @@
 <div id="wrapper">
     <div id="auth">
         <p id="are-you-registered">Вы уже зарегистрированы?</p>
-        <a href="/" id="login">Войти</a>
-        <a href="/" id="register">Регистрация</a>
+        <a href="{% url 'login' %}" id="login">Войти</a>
+        <a href="{% url 'register' %}" id="register">Регистрация</a>
         <button id="cancel" type="button" onclick="areYouRegistered()">позже</button>
     </div>
     <div id="header">

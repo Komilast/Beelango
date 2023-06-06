@@ -1,51 +1,58 @@
 from django.db import models
+from django.core.validators import validate_email
+from django.contrib.auth.hashers import make_password
+from django.contrib.auth.validators import UnicodeUsernameValidator
+from django.contrib.auth.password_validation import validate_password
 
 
-class Word(models.Model):
-    _english = models.CharField(max_length=100, verbose_name='английское слово')
-    _russian = models.JSONField(verbose_name='русские слова')
-    _transcription = models.CharField(max_length=50, verbose_name='транскрипция')
-    _synonyms = models.ManyToManyField('self', blank=True, verbose_name='синонимы')
+class User(models.Model):
+    username = models.CharField(
+        max_length=20,
+        unique=True,
+        help_text='Обязательно к заполнению. Максимум 20 символов. Можно использовать буквы, цифры и символы @/./+/-/_',
+        validators=[UnicodeUsernameValidator],
+        error_messages={
+            'unique': 'Имя пользователя занято',
+            'blank': 'Имя пользователя обязательно к заполнению',
+            'max_length': 'Имя пользователя не может превышать 20 символов',
+            'validators': 'Некорректное имя пользователя'
+        },
+        blank=False,
+        null=False
+    )
+
+    email = models.EmailField(
+        max_length=50,
+        unique=True,
+        blank=False,
+        null=False,
+        validators=[validate_email],
+        help_text='Обязательно к заполнению. Максимум 50 символов, минимум - 8',
+        error_messages={
+            'unique': 'Пользователь с такой электронной почтой уже существует',
+            'blank': 'Электронная почта обязательна к заполнению',
+            'max_length': 'Электронная почта не может превышать 50 символов',
+            'validators': "Некорректная электронная почта"
+        })
+
+    password = models.CharField(
+        max_length=20,
+        blank=False,
+        null=False,
+        help_text='Обязательно к заполнению. '
+                  'Максимум 20 символов, минимум - 6. Можно использовать буквы, цифры, и символы @/./+/-/_',
+        validators=[validate_password],
+        error_messages={
+            'blank': 'Пароль обязателен к заполнению',
+            'max_length': 'Пароль не может превышать 20 символов',
+            'validators': 'Введите корректный пароль'
+        })
 
     def __str__(self):
-        return self.english
+        return self.username
 
-    @property
-    def english(self):
-        return self._english
+    def save(self, *args, **kwargs):
+        self.password = make_password(self.password)
+        return super().save(*args, **kwargs)
 
-    @english.setter
-    def english(self, value):
-        if value.isalpha() and value.isascii():
-            self._english = value.capitalize()
-        else:
-            raise ValueError('Некорректное значение для английского слова')
-
-    @property
-    def russian(self):
-        return self._russian
-
-    @russian.setter
-    def russian(self, value):
-        for word in value:
-            if not all(1040 <= ord(char) <= 1103 for char in word):
-                raise ValueError('Некорректное значение для русского слова')
-        self._russian = [word.capitalize() for word in value]
-
-    @property
-    def transcription(self):
-        return self._transcription
-
-    @transcription.setter
-    def transcription(self, value):
-        if not all(char.isalpha() and ord(char) < 128 for char in value):
-            raise ValueError('Некорректное значение для транскрипции')
-        self._transcription = f'[{value}]'
-
-    @property
-    def synonyms(self):
-        return self._synonyms
-
-    @synonyms.setter
-    def synonyms(self, value):
-        self._synonyms = value
+    # todo В планах на будущее: Создать свои валидаторы

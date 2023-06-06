@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'main/css/login.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+</head>
+<body>
+
+<div id="container">
+
+<p id="title">Вход в <span id="orange">Bee</span>lango</p>
+
+<form method="post">
+    {% csrf_token %}
+
+    <p id="error">{{ error_message }}</p>
+
+    <label for="username">Имя пользователя:</label>
+    <input name="username" required>
+
+    <label for="password">Пароль:</label>
+    <input name="password" type="password" required>
+
+    <button type="submit">Войти</button>
+
+    <a href="/" id="pass-repair">Забыли пароль?</a>
+</form>
+</div>
+</body>
+</html>
